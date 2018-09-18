@@ -1,0 +1,17 @@
+FunctionMinusLogLike<-function(VecPar,datos,precision)
+{
+  Threshold<-VecPar[1]
+  Scale<-VecPar[2]
+  Shape<-VecPar[3]
+  Xmin<-min(datos)
+  m<-sum(datos==Xmin)
+  Xm<-sort(datos)[-c(1:m)]
+  Xmmenosh<-Xm-precision
+  Xmmash<-Xm+precision
+  MenosLogVeroXmin<--m*log(FunctionProbabilityXminRmpfr(VecPar,Xmin,precision))
+  Am<--((Xmmenosh-Threshold)^Shape)/Scale
+  Bm<--((Xmmash-Threshold)^Shape)/Scale
+  MenosLogVeroXm<--sum(log(exp(Am)-exp(Bm)))
+  MenosLogVero<-MenosLogVeroXmin+MenosLogVeroXm
+  return(MenosLogVero)
+}

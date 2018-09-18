@@ -1,0 +1,13 @@
+FunctionConstraintsGEV<-function(VecPar,datos,precision)
+{
+  aPar<-VecPar[1]
+  bPar<-VecPar[2]
+  cPar<-VecPar[3]
+  Xmin<-min(datos)
+  R<-(aPar-bPar/cPar)-(Xmin+precision)
+  h<-rep(NA,1)
+  h[1]<--R
+  h[2]<-bPar
+  h[3]<-cPar
+  return(h)
+}

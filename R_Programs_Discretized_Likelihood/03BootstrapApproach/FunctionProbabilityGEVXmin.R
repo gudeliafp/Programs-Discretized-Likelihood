@@ -1,0 +1,20 @@
+FunctionProbabilityGEVXmin<-function(VecPar,Xmin,precision)
+{
+  aPar<-VecPar[1]
+  bPar<-VecPar[2]
+  cPar<-VecPar[3]
+  Xmenosh<-Xmin-precision
+  Xmash<-Xmin+precision
+  A<-mpfr(-(1+cPar*(Xmenosh-aPar)/bPar)^(1/cPar),500)
+  B<-mpfr(-(1+cPar*(Xmash-aPar)/bPar)^(1/cPar),53)
+  R<-Xmenosh+bPar/cPar
+  if(aPar<R)
+  {
+    f<-exp(A)-exp(B)
+  }
+  else
+  {
+    f<-1-exp(B)
+  }
+  return(f)
+}

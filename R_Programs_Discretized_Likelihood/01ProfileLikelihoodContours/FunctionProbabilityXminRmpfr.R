@@ -1,0 +1,19 @@
+FunctionProbabilityXminRmpfr<-function(VecPar,Xmin,precision)
+{
+  Threshold<-VecPar[1]
+  Scale<-VecPar[2]
+  Shape<-VecPar[3]
+  Xmenosh<-Xmin-precision
+  Xmash<-Xmin+precision
+  A<--mpfr(((Xmenosh-Threshold)^Shape)/Scale,100)
+  B<--mpfr(((Xmash-Threshold)^Shape)/Scale,100)
+  if(Threshold<Xmenosh)
+  {
+    f<-exp(A)-exp(B)
+  }
+  else
+  {
+    f<-1-exp(B)
+  }
+  return(as.numeric(f))
+}

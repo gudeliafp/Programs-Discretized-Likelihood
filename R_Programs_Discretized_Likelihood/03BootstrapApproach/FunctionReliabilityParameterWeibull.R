@@ -1,0 +1,9 @@
+FunctionReliabilityParameterWeibull<-function(x,vmu1,vmu2,vgamma1,vgamma2,valpha1,valpha2)
+{
+  zX<-(1/vgamma1)*(x-vmu1)^valpha1
+  zY<-(1/vgamma2)*(x-vmu2)^valpha2
+  fx<-(valpha1/vgamma1)*((x-vmu1)^(valpha1-1))*exp(-zX)
+  Fy<-1-exp(-zY)
+  fobjective<-Fy*fx
+  return(fobjective)
+}

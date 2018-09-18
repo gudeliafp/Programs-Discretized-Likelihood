@@ -1,0 +1,11 @@
+FuncionMenosLogVeroXY<-function(VecPar,datosX,datosY,precision)
+{
+  Threshold<-VecPar[1]
+  ScaleX<-VecPar[2]
+  ScaleY<-VecPar[3]
+  Shape<-VecPar[4]
+  MenosLogVeroX<-FuncionMenosLogVero(c(Threshold,ScaleX,Shape),datosX,precision)
+  MenosLogVeroY<-FuncionMenosLogVero(c(Threshold,ScaleY,Shape),datosY,precision)
+  MenosLogVero<-MenosLogVeroX+MenosLogVeroY
+  return(MenosLogVero)
+}

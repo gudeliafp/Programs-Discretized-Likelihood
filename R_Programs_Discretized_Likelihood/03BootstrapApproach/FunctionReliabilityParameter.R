@@ -1,0 +1,15 @@
+FunctionReliabilityParameter<-function(x,vmuX,vmuY,vgammaX,vgammaY,valphaX,valphaY)
+{
+  vmu1<-vmuX
+  vmu2<-vmuY
+  vgamma1<-vgammaX^valphaX
+  vgamma2<-vgammaY^valphaY
+  valpha1<-valphaX
+  valpha2<-valphaY
+  zX<-(1/vgamma1)*(x-vmu1)^valpha1
+  zY<-(1/vgamma2)*(x-vmu2)^valpha2
+  fx<-(valpha1/vgamma1)*((x-vmu1)^(valpha1-1))*exp(-zX)
+  Fy<-1-exp(-zY)
+  fobjective<-Fy*fx
+  return(fobjective)
+}

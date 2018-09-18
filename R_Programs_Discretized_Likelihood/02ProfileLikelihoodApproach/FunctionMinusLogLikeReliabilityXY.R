@@ -1,0 +1,11 @@
+FunctionMinusLogLikeReliabilityXY<-function(VecPar,datosX,datosY,precision,Reliability)
+{
+  Threshold<-VecPar[1]
+  ScaleX<-VecPar[2]
+  Shape<-VecPar[3]
+  ScaleY<-ScaleX*(1-Reliability)/Reliability
+  MenosLogVeroX<-FunctionMinusLogLike(c(Threshold,ScaleX,Shape),datosX,precision)
+  MenosLogVeroY<-FunctionMinusLogLike(c(Threshold,ScaleY,Shape),datosY,precision)
+  MenosLogVero<-MenosLogVeroX+MenosLogVeroY
+  return(MenosLogVero)
+}

@@ -1,0 +1,12 @@
+FunctionMeasuringInstrument<-function(h,a0,b0,c0)
+{
+  vmu<-a0-(b0/c0)
+  ProbQuantile<-0.999999999999
+  jstarVar<-floor(vmu/(2*h))
+  StartVar<-(2*h)*jstarVar
+  EndVar<-ceiling(a0+(b0/c0)*(((-log(1-ProbQuantile))^c0)-1))
+  MiddlePointRVar<-seq(StartVar,EndVar,2*h)
+  ExtremesRVar<-seq(StartVar-h,EndVar+h,2*h)
+  MeasuringInstrument<-list(MiddlePointRVar,ExtremesRVar)
+  return(MeasuringInstrument)
+}
